@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teste de Gráfico</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Gráfico de Teste</h1>
+    <canvas id="graficoValores" width="400" height="200"></canvas>
+    
+    <script>
+        const valores = [];
+        const labels = [];
+
+        const chartConfig = {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Valores de Teste',
+                    data: valores,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    fill: true,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Tempo'
+                        }
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Valores'
+                        }
+                    }
+                }
+            }
+        };
+
+        let chart = new Chart(document.getElementById('graficoValores').getContext('2d'), chartConfig);
+
+        setInterval(() => {
+            const valor = Math.floor(Math.random() * 100); // Gera um valor aleatório
+            valores.push(valor);
+            labels.push(new Date().toLocaleTimeString());
+
+            if (valores.length > 10) {
+                valores.shift();
+                labels.shift();
+            }
+
+            chart.update();
+        }, 1000); // Atualiza a cada segundo
+    </script>
+</body>
+</html>

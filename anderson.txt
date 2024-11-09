@@ -1,0 +1,9 @@
+use sistemadecursos
+
+ db.createCollection("cursos", {capped:true, size:100000, max:50}) 
+
+ db.cursos.insertOne({titulo:"Introdução ao Java", descricao:"Cursos básico sobre orientação a objetos em Java.", categoria:"Linguagem de Programação", cargahoraria: 40, instrutor_id:"01" })
+ db.cursos.insertOne({titulo:"Introdução ao C++", descricao:"Cursos básico sobre c++.", categoria:"Estrutura de Linguagem", cargahoraria: 45, instrutor_id:"02" })
+db.cursos.insertOne({titulo:"Introdução ao HTML", descricao:"Cursos básico sobre HTML.", categoria:"Estrutura de Linguagem", cargahoraria: 45, instrutor_id:"03" })
+ db.cursos.insertOne({titulo:"Introdução ao MongoDB", descricao:"Cursos básico sobre o MongoDB.", categoria:"Banco de Dados", cargahoraria: 55, instrutor_id:"04" })
+
